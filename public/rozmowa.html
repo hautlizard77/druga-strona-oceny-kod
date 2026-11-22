@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wspólny ekran rozmowy · Druga Strona Oceny</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/meeting.css">
+  <script type="module" src="/meeting.mjs"></script>
+</head>
+<body class="meeting-page">
+  <a href="#main" class="skip-link">Przejdź do treści</a>
+  <header class="portal-masthead"><div class="portal-width meeting-nav">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">D</span><span>Druga Strona Oceny<small>Oceny okresowe służby cywilnej</small></span></div>
+    <a href="/" class="btn secondary" id="return-to-case">Wróć do sprawy</a>
+  </div></header>
+  <main id="main" class="meeting-main">
+    <section class="meeting-head"><div><p class="eyebrow">Wspólny ekran rozmowy</p><h1 id="person">Otwieranie rozmowy…</h1><p id="period"></p></div><span id="demo" class="pill" hidden>Dane fikcyjne</span></section>
+    <p id="status" role="status"></p>
+    <div id="board" hidden>
+      <div class="meeting-tools">
+        <label class="field">Kryterium<select id="criterion"></select></label>
+        <fieldset><legend>Zakres obserwacji</legend><div class="meeting-range">
+          <button id="recent" type="button" aria-pressed="true">Ostatnie dni</button>
+          <button id="full" type="button" aria-pressed="false">Cały okres</button>
+        </div></fieldset>
+        <button type="button" class="btn secondary" id="ask-agent" aria-controls="agent" aria-expanded="false">Zapytaj asystenta</button>
+      </div>
+      <section id="agent" class="surface stack" hidden>
+        <h2>Asystent rozmowy</h2>
+        <form class="stack" id="agent-form">
+          <label class="field">Pytanie o wybrane kryterium<input id="agent-input" type="text" maxlength="500" required placeholder="Co wiemy z wcześniejszej części okresu?"></label>
+          <div><button class="btn primary" type="submit">Zapytaj lokalny model AI</button></div>
+        </form>
+        <p id="agent-mode" class="small sub"></p>
+        <details><summary>Gotowe polecenia bez modelu</summary>
+          <div class="row"><button class="btn secondary" type="button" data-tool="porownaj_okresy">Porównaj okresy</button>
+          <button class="btn secondary" type="button" data-tool="glos_pracownika">Znajdź głos pracownika</button>
+          <button class="btn secondary" type="button" data-tool="przygotuj_rozmowe">Przygotuj pytania</button></div>
+        </details>
+        <div id="agent-result" class="stack" aria-live="polite"></div>
+      </section>
+      <div class="meeting-body">
+        <section><h2>Udostępnione obserwacje</h2><p id="range-caption" class="sub small"></p><ol class="meeting-line" id="entries"></ol></section>
+        <aside class="meeting-question"><p class="eyebrow">Pytanie do rozmowy</p><h2 id="question"></h2><p id="explanation"></p><button class="btn mint" type="button" id="expand">Pokaż cały okres</button></aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
